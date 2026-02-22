@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTU Pizzeria | Pizza Menu</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content container">
+        <p class="eyebrow">Artisan • Fresh • Local</p>
+        <h1>CTU Pizzeria Menu</h1>
+        <p>
+          Fresh ingredients, always.
+        </p>
+      </div>
+    </header>
+
+    <main class="container grid">
+      <!-- Main menu area is split into signature pizzas and specials-->
+      <section class="menu" aria-labelledby="menu-heading">
+        <div class="section-head">
+          <h2 id="menu-heading">Signature Pizzas</h2>
+          <p>Classic favorites crafted fresh each day.</p>
+        </div>
+        <div id="pizza-list" class="pizza-list"></div>
+
+        <div class="section-head specials-head">
+          <h2 id="specials-heading">Current Specials</h2>
+          <p>Chef-crafted specialties available now.</p>
+        </div>
+        <div id="specials-list" class="pizza-list"></div>
+      </section>
+
+      <!-- Cart is to the side -->
+      <aside class="cart" aria-labelledby="cart-heading">
+        <h2 id="cart-heading">Your Cart</h2>
+        <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+        <div class="cart-controls">
+          <label for="discount-code">Discount Code</label>
+          <div class="discount-row">
+            <input id="discount-code" type="text" placeholder="e.g. PIZZA10" />
+            <button id="apply-discount" class="btn btn--secondary">Apply</button>
+          </div>
+          <p id="discount-message" class="muted"></p>
+        </div>
+
+        <dl class="totals">
+          <div>
+            <dt>Subtotal</dt>
+            <dd id="subtotal">$0.00</dd>
+          </div>
+          <div>
+            <dt>Discount</dt>
+            <dd id="discount">-$0.00</dd>
+          </div>
+          <div>
+            <dt>Tax (Utah 7.25%)</dt>
+            <dd id="tax">$0.00</dd>
+          </div>
+          <div class="total-row">
+            <dt>Total</dt>
+            <dd id="total">$0.00</dd>
+          </div>
+        </dl>
+      </aside>
+    </main>
+    <template id="pizza-template">
+      <article class="pizza-card">
+        <div class="pizza-card__header">
+          <h3 class="pizza-name"></h3>
+          <span class="badge" hidden>SPECIAL</span>
+        </div>
+        <p class="pizza-description"></p>
+
+        <label>
+          Size
+          <select class="size-select"></select>
+        </label>
+
+        <label>
+          Crust
+          <select class="crust-select"></select>
+        </label>
+
+        <fieldset>
+          <legend>Topping Customizations</legend>
+          <div class="toppings-grid"></div>
+        </fieldset>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
