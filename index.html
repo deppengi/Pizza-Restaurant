@@ -65,6 +65,26 @@
             <dd id="total">$0.00</dd>
           </div>
         </dl>
+        <div class="checkout-section">
+  <h3>Checkout</h3>
+
+  <label for="customer-name">Full Name</label>
+  <input id="customer-name" type="text" placeholder="Enter your full name" />
+
+  <label for="customer-email">Email</label>
+  <input id="customer-email" type="email" placeholder="Enter your email" />
+
+  <label for="card-number">Card Number</label>
+  <input id="card-number" type="text" placeholder="Enter 16-digit card number" maxlength="16" />
+
+  <label for="payment-scenario">Payment Test</label>
+  <input id="payment-scenario" type="text" placeholder="SUCCESS, DECLINE, or TIMEOUT" />
+
+  <button id="checkout-btn" class="btn">Place Order</button>
+
+  <p id="checkout-message" class="muted"></p>
+  <div id="receipt"></div>
+</div>
       </aside>
     </main>
     <template id="pizza-template">
