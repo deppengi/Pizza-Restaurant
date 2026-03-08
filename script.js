@@ -304,3 +304,56 @@ document.getElementById("apply-discount").addEventListener("click", () => {
 
 renderMenu();
 renderCart();
+
+// Checkout functionality
+const checkoutBtn = document.getElementById("checkout-btn");
+const checkoutMessage = document.getElementById("checkout-message");
+const receiptDiv = document.getElementById("receipt");
+
+checkoutBtn.addEventListener("click", () => {
+
+  const name = document.getElementById("customer-name").value.trim();
+  const email = document.getElementById("customer-email").value.trim();
+  const card = document.getElementById("card-number").value.trim();
+  const scenario = document.getElementById("payment-scenario").value.trim().toUpperCase();
+
+  if (!name || !email || !card) {
+    checkoutMessage.textContent = "Please fill out all required fields.";
+    checkoutMessage.style.color = "red";
+    return;
+  }
+
+  if (state.cart.length === 0) {
+    checkoutMessage.textContent = "Your cart is empty.";
+    checkoutMessage.style.color = "red";
+    return;
+  }
+
+  if (scenario === "DECLINE") {
+    checkoutMessage.textContent = "Payment declined. Please try another card.";
+    checkoutMessage.style.color = "red";
+    return;
+  }
+
+  if (scenario === "TIMEOUT") {
+    checkoutMessage.textContent = "Payment timeout. Please try again.";
+    checkoutMessage.style.color = "orange";
+    return;
+  }
+
+  const totals = calculateTotals();
+
+  checkoutMessage.textContent = "Payment successful!";
+  checkoutMessage.style.color = "green";
+
+  receiptDiv.innerHTML = `
+    <h3>Receipt</h3>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Total Paid:</strong> ${formatCurrency(totals.total)}</p>
+    <p>Thank you for ordering from CTU Pizzeria!</p>
+  `;
+
+  state.cart = [];
+  renderCart();
+});
