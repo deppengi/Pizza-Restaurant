@@ -246,6 +246,20 @@ fieldset {
   color: var(--success);
 }
 
+.checkout-section {
+  margin-top: 1.25rem;
+}
+
+.checkout-section .btn {
+  width: 100%;
+}
+
+#receipt {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
 /* This helps mobile users see content, stacks the options instead of having them side to side */
 @media (max-width: 930px) {
   .grid {
